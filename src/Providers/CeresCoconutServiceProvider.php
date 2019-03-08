@@ -12,7 +12,7 @@ use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
 use IO\Services\ItemSearch\Helper\ResultFieldTemplate;
 use Plenty\Plugin\ConfigRepository;
-
+use MyTheme\Extensions\MyExtension;
 
 /**
  * Class CeresCoconutServiceProvider
@@ -29,7 +29,7 @@ class CeresCoconutServiceProvider extends ServiceProvider
 
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
-
+$twig->addExtension(MyExtension::class);
         $enabledOverrides = explode(", ", $config->get("CeresCoconut.templates.override"));
 
         // Override partials
